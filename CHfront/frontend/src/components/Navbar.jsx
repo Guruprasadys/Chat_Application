@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 export default function Navbar() {
 
   const { user, logout } = useContext(AuthContext);
+  
 
   return (
 
@@ -30,8 +31,8 @@ export default function Navbar() {
 
               <img
                 src={
-                  user?.profilePic
-                    ? `http://localhost:5000${user.profilePic}`
+                  user?.user.profilePic
+                    ? `http://localhost:5000${user.user.profilePic}`
                     : "/photo.png"
                 }
                 alt="profile"
@@ -47,7 +48,7 @@ export default function Navbar() {
             {/* Username */}
 
             <span className="text-white font-medium text-sm">
-              {user?.name || "User"}
+              {user?.user.name || "User"}
             </span>
 
           </div>

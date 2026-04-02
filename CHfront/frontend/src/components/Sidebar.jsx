@@ -20,8 +20,8 @@ export default function Sidebar({ setSelectedChat }) {
 
   const fetchChats = useCallback(async () => {
 
+  
     if (!user?.token) return;
-
     try {
 
       const { data } = await axios.get(
@@ -50,7 +50,7 @@ export default function Sidebar({ setSelectedChat }) {
   /* ================= SOCKET EVENTS ================= */
 
   useEffect(() => {
-
+        socket.on("receive_message", fetchChats);
     if (!socket) return;
 
     socket.on("group_created", (chat) => {

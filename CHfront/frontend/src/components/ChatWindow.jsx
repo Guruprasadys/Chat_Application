@@ -109,7 +109,7 @@ export default function ChatWindow({ selectedChat, setSelectedChat, user }) {
       isTemp: true
     };
 
-    setMessages((prev) => [...prev, tempMessage]);
+    // setMessages((prev) => [...prev, tempMessage]);
     setText("");
 
     try {

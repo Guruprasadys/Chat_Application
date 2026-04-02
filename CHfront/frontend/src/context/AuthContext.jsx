@@ -9,7 +9,7 @@ export const AuthContext = createContext();
 /* AUTH PROVIDER           */
 /* ----------------------- */
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // user object including token
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   /* ----------------------- */
@@ -24,20 +24,14 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.error("Failed to load user:", err);
     } finally {
-      setLoading(false);
+      setLoading(false); // important
     }
   }, []);
 
   /* ----------------------- */
   /* LOGIN FUNCTION          */
   /* ----------------------- */
-  const login = (data) => {
-    // data is the full backend response { success, message, token, user }
-    const userData = {
-      token: data.token,
-      ...data.user,
-    };
-
+  const login = (userData) => {
     setUser(userData);
     localStorage.setItem("chatAppUser", JSON.stringify(userData));
   };
